@@ -2,7 +2,9 @@ import nltk
 import numpy as np
 import pandas as pd
 from nltk.tokenize import RegexpTokenizer
+import time
 
+startTime = time.time()
 
 df = pd.read_csv('train_input.csv')
 df['taggedText'] = ""
@@ -18,7 +20,7 @@ politics = []
 soccer = []
 worldnews = []
 
-for convo in range(1000):
+for convo in range(len(df)):
     if df2.loc[convo,'category'] == 'hockey':
         hockey.append(df.loc[convo,'conversation'])
     elif df2.loc[convo,'category'] == 'movies':
@@ -126,7 +128,8 @@ worldDist = nltk.FreqDist(words)
 #world_word_tag_fd = nltk.FreqDist(worldTagText)
 #worldFreq = [wt[0] for (wt, _) in world_word_tag_fd.most_common() if wt[1] == 'NOUN']
              
-
+stopTime = time.time()
+print("--- %s seconds ---" % (stopTime - startTime))
         
 #for conversation in range(10):
 #    text = nltk.word_tokenize(df.loc[conversation,'conversation'])
