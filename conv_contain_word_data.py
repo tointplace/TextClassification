@@ -9,6 +9,9 @@ Created on Fri Feb 10 11:04:32 2017
 import nltk
 import pandas as pd
 import numpy as np
+import time
+
+startTime = time.time()
 
 dfTI = pd.read_csv('train_input.csv')
 dfTO = pd.read_csv('train_output.csv')
@@ -31,7 +34,7 @@ word_lemma = nltk.WordNetLemmatizer()
 cachedStopWords = set(nltk.corpus.stopwords.words('english'))
 cachedStopWords.update(('com', 'speaker_1', 'speaker_2', 'speaker_3', 'speaker_4', 'speaker_5', 'speaker_6', 'speaker_7', 'speaker_8', 'speaker_9', 'speaker_10'))
 
-for i in range(1000):
+for i in range(len(df)):
     token = tokenizer.tokenize(df.loc[i,'conversation'])
     token = [word for word in token if word not in cachedStopWords]
     tokenLem = [None]*len(token)
@@ -224,3 +227,14 @@ dfWorldnews = pd.concat(worldnewsFrame, axis=1)
 dfWorldnews.columns = ['word', 'probability']
 dfWorldnews = dfWorldnews.sort_values(by='probability', ascending=0)
 
+dfHockey.to_csv('condProbHockey.csv')
+dfMovies.to_csv('condProbMovies.csv')
+dfNba.to_csv('condProbNba.csv')
+dfNews.to_csv('condProbNews.csv')
+dfPolitics.to_csv('condProbPolitics.csv')
+dfNfl.to_csv('condProbNfl.csv')
+dfSoccer.to_csv('condProbSoccer.csv')
+dfWorldnews.to_csv('condProbWorldnews.csv')
+
+stopTime = time.time()
+print("--- %s seconds ---" % (stopTime - startTime))
