@@ -32,7 +32,7 @@ worldnews = []
 tokenizer = nltk.RegexpTokenizer(r'\w+')
 word_lemma = nltk.WordNetLemmatizer()
 cachedStopWords = set(nltk.corpus.stopwords.words('english'))
-cachedStopWords.update(('com', 'speaker_1', 'speaker_2', 'speaker_3', 'speaker_4', 'speaker_5', 'speaker_6', 'speaker_7', 'speaker_8', 'speaker_9', 'speaker_10'))
+cachedStopWords.update(('number', 'com', 'speaker_1', 'speaker_2', 'speaker_3', 'speaker_4', 'speaker_5', 'speaker_6', 'speaker_7', 'speaker_8', 'speaker_9', 'speaker_10'))
 
 for i in range(len(df)):
     token = tokenizer.tokenize(df.loc[i,'conversation'])

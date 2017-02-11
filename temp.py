@@ -23,7 +23,6 @@ politics = []
 soccer = []
 worldnews = []
 
-<<<<<<< HEAD
 for convo in range(len(df)):
     if df2.loc[convo,'category'] == 'hockey':
         hockey.append(df.loc[convo,'conversation'])
