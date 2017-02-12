@@ -35,7 +35,7 @@ cachedStopWords = set(nltk.corpus.stopwords.words('english'))
 cachedStopWords.update(('number', 'com', 'speaker_1', 'speaker_2', 'speaker_3', 'speaker_4', 'speaker_5', 'speaker_6', 'speaker_7', 'speaker_8', 'speaker_9', 'speaker_10'))
 
 for i in range(len(df)):
-    token = tokenizer.tokenize(df.loc[i,'conversation'])
+    token = tokenizer.tokenize(df.loc[i, 'conversation'])
     token = [word for word in token if word not in cachedStopWords]
     tokenLem = [None]*len(token)
     for w in range(len(token)):

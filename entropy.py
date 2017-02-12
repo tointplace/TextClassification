@@ -9,6 +9,7 @@ Created on Sat Feb 11 12:13:04 2017
 import pandas as pd
 import numpy as np
 import scipy as sp
+import scipy.stats
 
 df_list = []
 df_list.append(pd.read_csv('condProbHockey.csv'))
@@ -21,7 +22,7 @@ df_list.append(pd.read_csv('condProbSoccer.csv'))
 df_list.append(pd.read_csv('condProbWorldnews.csv'))
 
 names = ['hockey', 'movies', 'nba', 'news', 'politics', 'nfl', 'soccer', 'worldnews']
-numWords = 200
+numWords = 1000
 dfEntropy = pd.DataFrame()
 for category in range(len(df_list)):
     tempEnt = []
@@ -43,4 +44,4 @@ for category in range(len(df_list)):
     frames = [dfEntropy,dfTemp]
     dfEntropy = pd.concat(frames, axis=1, ignore_index=True)
 
-dfEntropy.to_csv('entropy.csv')
+dfEntropy.to_csv('entropy_1000.csv')
